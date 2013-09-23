@@ -515,6 +515,14 @@ class LessParser(object):
         """
         p[0] = list(p)[1:]
 
+    def p_ident_media_variable(self, p):
+        """ ident_parts               : css_media t_ws t_popen word ':' variable t_pclose
+        """
+        # FIXME: This is an ugly hack, the dereferencing should happen
+        # probably somewhere in node processing, not during the parsing!
+        p[6] = self.scope.variables(p[6]).value
+        p[0] = list(p)[1:]
+
     def p_selector(self, p):
         """ selector                  : '*'
                                       | '+'
