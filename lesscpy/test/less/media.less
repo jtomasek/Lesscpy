@@ -17,7 +17,7 @@
 @media print {
 	@var: 42;
     .class {
-        color: blue;    
+        color: blue;
         .sub {
             width: @var;
         }
@@ -39,6 +39,7 @@
 /*
 
 */
-@media (min-width: 768px) and (max-width: 979px) {
+@variable: 768px;
+@media (min-width: @variable) and (max-width: 979px) {
 	.hidden-desktop    { display: none !important; }
 }
